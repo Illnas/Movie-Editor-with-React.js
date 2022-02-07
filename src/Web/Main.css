@@ -1,0 +1,33 @@
+
+
+main {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #093545;
+}
+
+.firstSvg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+   width: 100%;     
+}
+
+.firstSvg svg {
+   width: 100%; 
+}
+
+.secondSvg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+   width: 100%; 
+}
+
+.secondSvg svg {
+   width: 100%; 
+}

@@ -1,15 +1,18 @@
 import React, { useRef, useState } from "react";
 import "../Web/Display.css"
 import Empty from "./Empty";
+import Items from "./Items";
 
 
-const Display = ({ afterLoginRef }) => {
-const [display, setDisplay] = useState(false)
+const Display = ({ afterLoginRef, display }) => {
+
 
 
   return (
      <section ref={afterLoginRef} className="display">
-         <Empty />
+        {display ? <Empty /> : <Items />}
+         
+         
      </section> 
 
   )

@@ -8,8 +8,7 @@ function App() {
   
 
 
-
-
+  const [display, setDisplay] = useState(false)
   const afterLoginRef = useRef();
   const beforeLoginRef = useRef();
 
@@ -17,7 +16,7 @@ function App() {
   return (
     <main>
       <Login beforeLoginRef={beforeLoginRef} afterLoginRef={afterLoginRef}/>
-      <Display afterLoginRef={afterLoginRef}/>
+      <Display afterLoginRef={afterLoginRef} display={display}/>
    
 
 

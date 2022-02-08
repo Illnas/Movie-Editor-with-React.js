@@ -1,13 +1,13 @@
 import React from "react";
-import "../Web/Items.css";
+
 
 const Items = () => {
   return (
     <section className="items">
-      <div className="section-container">
         <header>
           <div className="left">
             <h2>My movies</h2>
+            
             <svg
               width="28"
               height="28"
@@ -132,7 +132,7 @@ const Items = () => {
             Next
           </a>
         </footer>
-      </div>
+
     </section>
   );
 };

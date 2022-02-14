@@ -8,11 +8,11 @@ const Login = ({ beforeLoginRef, afterLoginRef, setUsername, setPassword }) => {
   
   const Login = (e) => {
     e.preventDefault()
- /*    beforeLoginRef.current.style.display = "none";
-    afterLoginRef.current.style.display = "flex"; */
-    console.log(pass, userName)
+    beforeLoginRef.current.style.display = "none";
+    afterLoginRef.current.style.display = "none";
+/*     console.log(pass, userName)
     setPassword(pass)
-    setUsername(userName)
+    setUsername(userName) */
 
   };
 

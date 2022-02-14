@@ -3,13 +3,13 @@ import Empty from "./Empty";
 import Items from "./Items";
 
 
-const Display = ({ afterLoginRef, display }) => {
+const Display = ({ afterLoginRef, display, token }) => {
 
 
 
   return (
      <section ref={afterLoginRef} className="display">
-        {display ? <Empty /> : <Items />}
+        {display ? <Empty /> : <Items token={token}/>}
          
          
      </section> 

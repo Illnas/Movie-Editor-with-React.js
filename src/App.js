@@ -1,31 +1,63 @@
 import React, { useRef, useState, useEffect } from "react";
+import Create from "./Components/CreateMovies";
+import CreateMovies from "./Components/CreateMovies";
 import Display from "./Components/Display";
 import Login from "./Components/Login";
 
 function App() {
   const [display, setDisplay] = useState(false);
-  const [data, setData] = useState(null);
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const afterLoginRef = useRef();
   const beforeLoginRef = useRef();
+  const [token, setToken] = useState("");
 
   useEffect(() => {
-    var requestOptions = {
-      method: 'GET',
-      redirect: 'follow'
+    const fetchData = async () => {
+      const formdata = new FormData();
+      formdata.append("identifier", "dariosting@gmail.com");
+      formdata.append("password", "AS8zrTCWwQMYRf8w");
+
+      const requestOptions = {
+        method: "POST",
+        body: formdata,
+        /*  headers: {"Authorization": `Bearer ${data.jwt}`}, */
+        redirect: "follow",
+      };
+
+      try {
+        setLoading(true);
+        const response = await fetch(
+          "https://zm-movies-assignment.herokuapp.com/api/auth/local",
+          requestOptions
+        );
+        const json = await response.json();
+        localStorage.setItem("token", json.jwt)
+        setLoading(false);
+      } catch (error) {
+        console.log("error", error);
+      }
     };
+    fetchData();
     
-    fetch("https://zm-movies-assignment.herokuapp.com/api/movies/", requestOptions)
-      .then(response => response.text())
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error));
   }, []);
 
   return (
     <main>
-      <Login beforeLoginRef={beforeLoginRef} afterLoginRef={afterLoginRef} username={username} setUsername={setUsername} password={password} setPassword={setPassword}/>
-      <Display afterLoginRef={afterLoginRef} display={display} />
+      <Login
+        beforeLoginRef={beforeLoginRef}
+        afterLoginRef={afterLoginRef}
+        username={username}
+        setUsername={setUsername}
+        password={password}
+        setPassword={setPassword}
+      />
+      <CreateMovies />
+
+      <Display afterLoginRef={afterLoginRef} display={display} token={token} />
+
+   
 
       <div className="firstSvg">
         <svg
